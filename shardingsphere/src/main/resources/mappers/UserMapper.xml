@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lockie.shardingsphere.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.lockie.shardingsphere.entity.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+  </resultMap>
+
+  <select id="selectUser" resultType="User">
+    select * from user
+  </select>
+
+  <insert id="addUser" parameterType="User">
+    insert into user(name,password,email,birthday) values (#{name},#{password},#{email},#{birthday})
+  </insert>
+</mapper>
